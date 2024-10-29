@@ -4,18 +4,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_kurdish_localization/flutter_kurdish_localization.dart';
 import 'package:new_peshmargah_pro/pages/ResponsiveLoginLayout.dart';
-import 'package:new_peshmargah_pro/pages/fbi.dart';
-import 'package:new_peshmargah_pro/pages/helthy.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(const MyApp());
 
 class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
   @override
   _MyAppState createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
-  Locale _locale = Locale('en'); // Default locale
+  Locale _locale = const Locale('en'); // Default locale
 
   void _changeLanguage(Locale locale) {
     setState(() {
@@ -26,12 +26,12 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      designSize: Size(360, 690), // Base dimensions for scaling
+      designSize: const Size(360, 690), // Base dimensions for scaling
       minTextAdapt: true,
       builder: (context, child) {
         return MaterialApp(
           locale: _locale,
-          localizationsDelegates: [
+          localizationsDelegates: const [
             KurdishMaterialLocalizations.delegate,
             KurdishCupertinoLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
@@ -39,10 +39,10 @@ class _MyAppState extends State<MyApp> {
             AppLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
           ],
-          supportedLocales: [
-            const Locale('en', ''), // English
-            const Locale('ar', ''), // Arabic
-            const Locale('ku', ''), // Central Kurdish (Sorani)
+          supportedLocales: const [
+            Locale('en', ''), // English
+            Locale('ar', ''), // Arabic
+            Locale('ku', ''), // Central Kurdish (Sorani)
           ],
           debugShowCheckedModeBanner: false,
           builder: (context, child) {
@@ -64,7 +64,7 @@ class _MyAppState extends State<MyApp> {
 class MainScreen extends StatelessWidget {
   final Function(Locale) onLocaleChange;
 
-  MainScreen({required this.onLocaleChange});
+  const MainScreen({super.key, required this.onLocaleChange});
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +77,7 @@ class MainScreen extends StatelessWidget {
         },
       ),
       floatingActionButton: PopupMenuButton<String>(
-        icon: Icon(
+        icon: const Icon(
           Icons.language,
           color: Colors.black, // Set your desired icon color
           size: 30, // Set the size of the icon
@@ -86,13 +86,13 @@ class MainScreen extends StatelessWidget {
           // Handle language selection
           switch (value) {
             case 'en':
-              onLocaleChange(Locale('en'));
+              onLocaleChange(const Locale('en'));
               break;
             case 'ar':
-              onLocaleChange(Locale('ar'));
+              onLocaleChange(const Locale('ar'));
               break;
             case 'ku':
-              onLocaleChange(Locale('ku'));
+              onLocaleChange(const Locale('ku'));
               break;
           }
         },

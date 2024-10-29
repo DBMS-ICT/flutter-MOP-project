@@ -85,12 +85,12 @@ class _HealthtPageState extends State<HealthtPage> {
       value: _selectedGender,
       items: [
         DropdownMenuItem(
-          child: Text(AppLocalizations.of(context)!.genderMale),
           value: 'Male',
+          child: Text(AppLocalizations.of(context)!.genderMale),
         ),
         DropdownMenuItem(
-          child: Text(AppLocalizations.of(context)!.genderFemale),
           value: 'Female',
+          child: Text(AppLocalizations.of(context)!.genderFemale),
         ),
       ],
       onChanged: (value) {
@@ -116,8 +116,8 @@ class _HealthtPageState extends State<HealthtPage> {
         'O-',
       ]
           .map((bloodGroup) => DropdownMenuItem(
-                child: Text(bloodGroup),
                 value: bloodGroup,
+                child: Text(bloodGroup),
               ))
           .toList(),
       onChanged: (value) {
@@ -286,7 +286,7 @@ class _HealthtPageState extends State<HealthtPage> {
                     style: ElevatedButton.styleFrom(
                       elevation: 0,
                       backgroundColor: Colors.white,
-                      shape: ContinuousRectangleBorder(
+                      shape: const ContinuousRectangleBorder(
                         side: BorderSide(
                             color: Color.fromRGBO(162, 197, 162, 1.0),
                             width: 1),

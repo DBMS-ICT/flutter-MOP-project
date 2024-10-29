@@ -1,17 +1,56 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart'
+    show
+        BorderRadius,
+        BorderSide,
+        BuildContext,
+        Center,
+        Color,
+        Colors,
+        Column,
+        Container,
+        ContinuousRectangleBorder,
+        CrossAxisAlignment,
+        EdgeInsets,
+        ElevatedButton,
+        Expanded,
+        FloatingLabelBehavior,
+        FontWeight,
+        Icon,
+        IconButton,
+        Icons,
+        Image,
+        InputDecoration,
+        Locale,
+        MainAxisAlignment,
+        MaterialPageRoute,
+        MediaQuery,
+        Navigator,
+        Orientation,
+        OutlineInputBorder,
+        Row,
+        Scaffold,
+        SingleChildScrollView,
+        SizedBox,
+        State,
+        StatefulWidget,
+        Text,
+        TextEditingController,
+        TextField,
+        TextStyle,
+        Widget;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart'; // Import for localization
 import 'package:new_peshmargah_pro/pages/helthy.dart';
 import 'fbi.dart';
 import 'ict_page.dart'; // Import your Healthy page
-import 'package:http/http.dart' as http; // Import the http package
-import 'dart:convert'; // Import for JSON encoding/decoding
+// import 'package:http/http.dart' as http; // Import the http package
+// import 'dart:convert'; // Import for JSON encoding/decoding
 
 class ResponsiveLoginLayout extends StatefulWidget {
   final Function(Locale) onLocaleChange; // Callback for language change
 
-  ResponsiveLoginLayout(
-      {required this.onLocaleChange}); // Add the required parameter
+  const ResponsiveLoginLayout(
+      {super.key, required this.onLocaleChange}); // Add the required parameter
 
   @override
   State<ResponsiveLoginLayout> createState() => _ResponsiveLoginLayoutState();
@@ -49,20 +88,20 @@ class _ResponsiveLoginLayoutState extends State<ResponsiveLoginLayout> {
     // Customize layout based on device type
     if (layoutType == 'desktop') {
       fontSize = 40;
-      buttonPadding = EdgeInsets.symmetric(horizontal: 100, vertical: 20);
-      margin = EdgeInsets.fromLTRB(100, 90, 100, 0);
+      buttonPadding = const EdgeInsets.symmetric(horizontal: 100, vertical: 20);
+      margin = const EdgeInsets.fromLTRB(100, 90, 100, 0);
       imageWidth = 500;
       imageHeight = 300;
     } else if (layoutType == 'tablet') {
       fontSize = 35;
-      buttonPadding = EdgeInsets.symmetric(horizontal: 70, vertical: 20);
-      margin = EdgeInsets.fromLTRB(40, 90, 40, 0);
+      buttonPadding = const EdgeInsets.symmetric(horizontal: 70, vertical: 20);
+      margin = const EdgeInsets.fromLTRB(40, 90, 40, 0);
       imageWidth = 400;
       imageHeight = 200;
     } else {
       fontSize = 30;
-      buttonPadding = EdgeInsets.symmetric(horizontal: 50, vertical: 15);
-      margin = EdgeInsets.fromLTRB(20, 90, 20, 0);
+      buttonPadding = const EdgeInsets.symmetric(horizontal: 50, vertical: 15);
+      margin = const EdgeInsets.fromLTRB(20, 90, 20, 0);
       imageWidth = 400;
       imageHeight = 400;
     }
@@ -111,25 +150,25 @@ class _ResponsiveLoginLayoutState extends State<ResponsiveLoginLayout> {
         style: TextStyle(
           fontSize: fontSize,
           fontWeight: FontWeight.bold,
-          color: Color.fromRGBO(135, 36, 36, 1.0),
+          color: const Color.fromRGBO(135, 36, 36, 1.0),
         ),
       ),
-      SizedBox(height: 30),
+      const SizedBox(height: 30),
       _buildEmailField(context),
-      SizedBox(height: 30),
+      const SizedBox(height: 30),
       _buildPasswordField(context),
-      SizedBox(height: 25),
+      const SizedBox(height: 25),
       if (_errorMessage.isNotEmpty)
         Text(
           _errorMessage,
-          style: TextStyle(color: Colors.red, fontSize: 18),
+          style: const TextStyle(color: Colors.red, fontSize: 18),
         ),
-      SizedBox(height: 10),
+      const SizedBox(height: 10),
       ElevatedButton(
         style: ElevatedButton.styleFrom(
           padding: buttonPadding,
           shape: ContinuousRectangleBorder(
-            side: BorderSide(
+            side: const BorderSide(
               width: 5,
               color: Color.fromRGBO(135, 36, 36, 1.0),
             ),
@@ -142,7 +181,7 @@ class _ResponsiveLoginLayoutState extends State<ResponsiveLoginLayout> {
           style: TextStyle(
             fontSize: fontSize * 0.75,
             fontWeight: FontWeight.bold,
-            color: Color.fromRGBO(135, 36, 36, 1.0),
+            color: const Color.fromRGBO(135, 36, 36, 1.0),
           ),
         ),
       ),
@@ -164,20 +203,20 @@ class _ResponsiveLoginLayoutState extends State<ResponsiveLoginLayout> {
   TextField _buildEmailField(BuildContext context) {
     return TextField(
       controller: _emailController,
-      style: TextStyle(fontSize: 20),
+      style: const TextStyle(fontSize: 20),
       decoration: InputDecoration(
-        enabledBorder: OutlineInputBorder(
+        enabledBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.grey, width: 5)),
         floatingLabelBehavior: FloatingLabelBehavior.always,
         labelText: AppLocalizations.of(context)!.email,
-        labelStyle: TextStyle(
+        labelStyle: const TextStyle(
             fontSize: 20,
             color: Color.fromRGBO(135, 36, 36, 1.0),
             fontWeight: FontWeight.bold),
         hintText: '*********@gmail.com',
-        hintStyle: TextStyle(color: Colors.grey, fontSize: 20),
-        border: OutlineInputBorder(),
-        focusedBorder: OutlineInputBorder(
+        hintStyle: const TextStyle(color: Colors.grey, fontSize: 20),
+        border: const OutlineInputBorder(),
+        focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.grey, width: 5)),
       ),
     );
@@ -188,7 +227,7 @@ class _ResponsiveLoginLayoutState extends State<ResponsiveLoginLayout> {
     return TextField(
       controller: _passwordController,
       obscureText: !_isPasswordVisible,
-      style: TextStyle(fontSize: 20),
+      style: const TextStyle(fontSize: 20),
       decoration: InputDecoration(
         suffixIcon: IconButton(
           icon: Icon(
@@ -201,18 +240,18 @@ class _ResponsiveLoginLayoutState extends State<ResponsiveLoginLayout> {
             });
           },
         ),
-        enabledBorder: OutlineInputBorder(
+        enabledBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.grey, width: 5)),
         floatingLabelBehavior: FloatingLabelBehavior.always,
         labelText: AppLocalizations.of(context)!.password,
-        labelStyle: TextStyle(
+        labelStyle: const TextStyle(
             fontSize: 20,
             color: Color.fromRGBO(135, 36, 36, 1.0),
             fontWeight: FontWeight.bold),
         hintText: '*********',
-        hintStyle: TextStyle(color: Colors.grey, fontSize: 20),
-        border: OutlineInputBorder(),
-        focusedBorder: OutlineInputBorder(
+        hintStyle: const TextStyle(color: Colors.grey, fontSize: 20),
+        border: const OutlineInputBorder(),
+        focusedBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.grey, width: 5)),
       ),
     );
@@ -238,7 +277,7 @@ class _ResponsiveLoginLayoutState extends State<ResponsiveLoginLayout> {
 // Method to simulate sending data via POST
   Future<void> _sendDataToDatabase(String email, String password) async {
     // Simulate a delay to mimic network latency
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
 
     // Default simulated response
     String role = 'unknown'; // Default role if credentials don't match
@@ -273,16 +312,16 @@ class _ResponsiveLoginLayoutState extends State<ResponsiveLoginLayout> {
       // Navigate to appropriate page based on user role
       switch (role) {
         case 'ict':
-          Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => IctPage()));
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) => const IctPage()));
           break;
         case 'fbi':
           Navigator.pushReplacement(
               context, MaterialPageRoute(builder: (context) => FbiPage()));
           break;
         case 'healthy':
-          Navigator.pushReplacement(
-              context, MaterialPageRoute(builder: (context) => HealthtPage()));
+          Navigator.pushReplacement(context,
+              MaterialPageRoute(builder: (context) => const HealthtPage()));
           break;
         default:
           setState(() {

@@ -3,6 +3,8 @@ import 'package:intl/intl.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FbiPage extends StatefulWidget {
+  const FbiPage({super.key});
+
   @override
   _FbiPageState createState() => _FbiPageState();
 }
@@ -29,18 +31,18 @@ class _FbiPageState extends State<FbiPage> {
       labelText: label,
       border: OutlineInputBorder(
         borderRadius: BorderRadius.circular(5),
-        borderSide: BorderSide(color: Colors.grey, width: 1),
+        borderSide: const BorderSide(color: Colors.grey, width: 1),
       ),
       focusedBorder: OutlineInputBorder(
         borderRadius: BorderRadius.circular(5),
-        borderSide: BorderSide(color: Colors.blue, width: 1),
+        borderSide: const BorderSide(color: Colors.blue, width: 1),
       ),
       filled: true,
       fillColor: Colors.white,
-      contentPadding: EdgeInsets.symmetric(vertical: 12, horizontal: 10),
+      contentPadding: const EdgeInsets.symmetric(vertical: 12, horizontal: 10),
       suffixIcon: isDateField
           ? IconButton(
-              icon: Icon(Icons.calendar_today),
+              icon: const Icon(Icons.calendar_today),
               onPressed: () => _selectDate(context),
             )
           : null,
@@ -54,8 +56,8 @@ class _FbiPageState extends State<FbiPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(label,
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-        SizedBox(height: 8),
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+        const SizedBox(height: 8),
         TextFormField(
           controller: controller,
           decoration:
@@ -70,7 +72,7 @@ class _FbiPageState extends State<FbiPage> {
             return null;
           },
         ),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
       ],
     );
   }
@@ -80,8 +82,8 @@ class _FbiPageState extends State<FbiPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(AppLocalizations.of(context)!.gender,
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-        SizedBox(height: 8),
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+        const SizedBox(height: 8),
         DropdownButtonFormField<String>(
           value: _selectedGender,
           onChanged: (value) {
@@ -93,14 +95,14 @@ class _FbiPageState extends State<FbiPage> {
               _simpleTextFieldDecoration(AppLocalizations.of(context)!.gender),
           items: [
             DropdownMenuItem(
-                child: Text(AppLocalizations.of(context)!.genderMale),
-                value: 'Male'),
+                value: 'Male',
+                child: Text(AppLocalizations.of(context)!.genderMale)),
             DropdownMenuItem(
-                child: Text(AppLocalizations.of(context)!.genderFemale),
-                value: 'Female'),
+                value: 'Female',
+                child: Text(AppLocalizations.of(context)!.genderFemale)),
           ],
         ),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
       ],
     );
   }
@@ -110,8 +112,8 @@ class _FbiPageState extends State<FbiPage> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(AppLocalizations.of(context)!.bloodGroup,
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
-        SizedBox(height: 8),
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+        const SizedBox(height: 8),
         DropdownButtonFormField<String>(
           value: _selectedBloodGroup,
           onChanged: (value) {
@@ -121,18 +123,18 @@ class _FbiPageState extends State<FbiPage> {
           },
           decoration: _simpleTextFieldDecoration(
               AppLocalizations.of(context)!.bloodGroup),
-          items: [
-            DropdownMenuItem(child: Text('A+'), value: 'A+'),
-            DropdownMenuItem(child: Text('A-'), value: 'A-'),
-            DropdownMenuItem(child: Text('B+'), value: 'B+'),
-            DropdownMenuItem(child: Text('B-'), value: 'B-'),
-            DropdownMenuItem(child: Text('AB+'), value: 'AB+'),
-            DropdownMenuItem(child: Text('AB-'), value: 'AB-'),
-            DropdownMenuItem(child: Text('O+'), value: 'O+'),
-            DropdownMenuItem(child: Text('O-'), value: 'O-'),
+          items: const [
+            DropdownMenuItem(value: 'A+', child: Text('A+')),
+            DropdownMenuItem(value: 'A-', child: Text('A-')),
+            DropdownMenuItem(value: 'B+', child: Text('B+')),
+            DropdownMenuItem(value: 'B-', child: Text('B-')),
+            DropdownMenuItem(value: 'AB+', child: Text('AB+')),
+            DropdownMenuItem(value: 'AB-', child: Text('AB-')),
+            DropdownMenuItem(value: 'O+', child: Text('O+')),
+            DropdownMenuItem(value: 'O-', child: Text('O-')),
           ],
         ),
-        SizedBox(height: 16),
+        const SizedBox(height: 16),
       ],
     );
   }
@@ -181,7 +183,7 @@ class _FbiPageState extends State<FbiPage> {
         !_isPhoneNumberValid(_controllers['phoneNumber']!.text) ||
         _selectedBloodGroup == null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Please fill in all fields correctly!')),
+        const SnackBar(content: Text('Please fill in all fields correctly!')),
       );
       return;
     }
@@ -202,7 +204,7 @@ class _FbiPageState extends State<FbiPage> {
 
     // Show success message and print the data
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Form submitted successfully!')),
+      const SnackBar(content: Text('Form submitted successfully!')),
     );
     print(data); // Handle the form submission here
   }
@@ -224,12 +226,14 @@ class _FbiPageState extends State<FbiPage> {
         actions: [
           IconButton(
               onPressed: () {},
-              icon: Icon(Icons.account_circle, size: 40, color: Colors.white)),
+              icon: const Icon(Icons.account_circle,
+                  size: 40, color: Colors.white)),
         ],
         backgroundColor: Colors.black,
         title: Text(
           AppLocalizations.of(context)!.theIntelligenceAgency,
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          style:
+              const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
       ),
       body: OrientationBuilder(
@@ -241,19 +245,19 @@ class _FbiPageState extends State<FbiPage> {
               child: ListView(
                 children: [
                   isPortrait ? _buildPortraitLayout() : _buildLandscapeLayout(),
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                       elevation: 0,
                       backgroundColor: Colors.white,
-                      shape: ContinuousRectangleBorder(
+                      shape: const ContinuousRectangleBorder(
                         side: BorderSide(color: Colors.black, width: 1),
                       ),
                     ),
                     onPressed: _submitForm,
                     child: Text(
                       AppLocalizations.of(context)!.submit,
-                      style: TextStyle(
+                      style: const TextStyle(
                         color: Colors.black,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,

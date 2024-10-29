@@ -10,6 +10,6 @@ class IctPage extends StatefulWidget {
 class _IctPageState extends State<IctPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return const Scaffold();
   }
 }
